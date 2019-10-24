@@ -1,0 +1,10 @@
+.container{
+  max-width: 950px;
+  height: 500px;
+  border: 4px orange solid;
+  margin: 20px auto;
+  border-radius: 15px;
+}
+h2{
+  text-align: center;
+}

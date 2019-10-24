@@ -1,0 +1,60 @@
+.spanContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border: 1px black solid;
+  border-radius: 5px;
+  animation: fade 1.5s;
+}
+.spanContainer__lable {
+  display: block;
+  width: 90%;
+  color: black;
+  cursor: pointer;
+  padding: 5px 25px;
+  font-size: 25px;
+}
+@keyframes fade{
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
+.spanContainer__lable.important{
+  color: red;
+}
+.spanContainer__lable.line-through{
+  text-decoration: line-through;
+  text-decoration-color: black;
+}
+.spanContainer__delete{
+  width: 5%;
+  height: 20px;
+  background-color: white;
+  height: 29px;
+  cursor: pointer;
+  outline: none;
+  margin: 0 2px;
+  border-radius: 10px;
+}
+.spanContainer__delete:hover{
+  background-color:red;
+  color: black
+}
+.spanContainer__delete:hover i{
+  color: black
+}
+.spanContainer__delete.important:hover{
+  background-color:green;
+}
+.spanContainer__delete .far{
+  font-size: 20px;
+  color: red;
+}
+.spanContainer__delete .fas{
+  font-size: 20px;
+  color: green;
+}
