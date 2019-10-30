@@ -11,7 +11,9 @@ export default class App extends React.Component{
     search: '', 
     filter: 'all'
   };
+
   startid = 1;
+
   addElement = (text) => {
     const newElement = {
       lable: text,
@@ -26,6 +28,7 @@ export default class App extends React.Component{
       };
     })
   };
+
   deleteElement = (id) => {
     this.setState(({todoData})=>{
       const elId = todoData.findIndex((el) => el.id === id );
@@ -35,12 +38,14 @@ export default class App extends React.Component{
       };
     })
   };
+
   changeProperty = (id, arr, propName) => {
     const elId = arr.findIndex((el) => el.id === id );
     const oldElement = arr[elId];
     const newElement = {...oldElement, [propName]: !oldElement[propName]};
     return [ ...arr.slice(0, elId), newElement, ...arr.slice(elId+1)];
   };
+
   changeDone = (id) => {
     this.setState(({todoData})=>{
       const newData = this.changeProperty(id,todoData,'done');
@@ -49,6 +54,7 @@ export default class App extends React.Component{
       };
     })
   };
+
   changeImportant = (id) =>{
     this.setState(({todoData})=>{
       const newData = this.changeProperty(id,todoData,'important');
@@ -57,29 +63,48 @@ export default class App extends React.Component{
       };
     })
   };
+
   changeSearchEl = (el) => {
-    this.setState(({search: el}))
+    this.setState({search: el})
   };
+
+  chageFilterEl = (el) => {
+    this.setState({filter: el})
+  };
+      
   searchElement = (arr, search) => {
     if (search === ''){
        return arr
     }
-    return this.state.todoData.filter((e)=> e.lable.toLowerCase().includes(search.toLowerCase()));
+    return arr.filter((e)=> e.lable.toLowerCase().includes(search.toLowerCase()));
   };
+
+  filterElement = (arr, filterProp) => {
+    if(filterProp==='all'){
+      return arr;
+    }
+    else if (filterProp === 'done') {
+      return arr.filter((el) => el.done);
+    }
+    else if (filterProp === 'important') {
+      return arr.filter((el) => el.important);
+    }
+  };
+
   render() {
-    const {todoData,search} = this.state
+    const {todoData,search,filter} = this.state
     let completed_tasks = todoData.filter((el) => el.done).length;
-    let important_tasks = todoData.filter((el) => el.important).length;
-    const visibleData = this.searchElement(todoData,search)
-    // const nodata = [{lable: 'Добавь свою первую задачу!', done: false, important: false, id: 0}]
-    // .length === 0 ? nodata : todoData
+    let activ_tasks = todoData.filter((el) => el.lable).length - todoData.filter((el) => el.done).length;
+    const visibleData = this.searchElement(this.filterElement(todoData,filter),search)
     return (
      <div className="container">
        <h2>Список дел</h2>
-       {/* <div className='text'>Выполненные дела: {completed_tasks === 0 ? 'у вас пока нет выполненных дел': completed_tasks } <br/> Важные дела: {important_tasks === 0 ? 'вы еще не добавляли важных дел': important_tasks }</div> */}
+       <div className='text'>Активных задач: {activ_tasks === 0 ? 'все задачи выполнены!': activ_tasks } <br/> Выполненных задач: {completed_tasks === 0 ? 'у вас пока нет выполненных задач': completed_tasks }</div>
        <SearchBlock 
        placeholder='Поиск'
-       searchElement = {this.changeSearchEl}/>
+       searchElement = {this.changeSearchEl}
+       filterElement = {this.chageFilterEl}
+       startfilter = {this.state.filter}/>
        <LisBlock
         changeDone = {this.changeDone}
         changeImportant={this.changeImportant}
