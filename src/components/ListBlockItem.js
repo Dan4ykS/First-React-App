@@ -4,11 +4,11 @@ import '../css/LisBlockItem.css';
 export default function FormItem({lable,deleteItem,changeDone,done,changeImportant,important}){
   let classNames = 'spanContainer__lable';
     if (important) {
-      classNames +=' important'
-    };
+      classNames +=' important';
+    }
     if(done) {
-      classNames +=' line-through'
-    };
+      classNames +=' line-through';
+    }
   return (
     <div className='spanContainer fade'>
       <span className={classNames} onClick = {changeDone}>{lable}</span>

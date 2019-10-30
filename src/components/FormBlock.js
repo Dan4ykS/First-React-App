@@ -8,23 +8,23 @@ export default class InputBlock extends React.Component{
   customOnChange = (event) => {
     this.setState({
       value: event.target.value
-    });
+    })
   };
   customSubmit = (event) => {
     event.preventDefault();
     this.props.addElement(this.state.value);
     this.setState({
       value: ''
-    });
+    })
   };
   render(){
     const {btnValue} = this.props;
     const {value} = this.state;
     return(
       <form className='wrap' onSubmit={this.customSubmit}>
-        <input type='text' value={value} onChange={this.customOnChange} placeholder='Новая задача на сегодня!' className='castomInput'></input>
+        <input type='text' value={value} onChange={this.customOnChange} placeholder={this.props.placeholder}className='castomInput'></input>
         <button className='castomBtn'>{btnValue}</button>
       </form>
     );
   };
-};
+}
