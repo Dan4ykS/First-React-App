@@ -10,7 +10,7 @@ export default class App extends React.Component{
     todoData: [],
     search: '', 
     filter: 'all',
-    date: ''
+    date: new Date()
   };
 
   startid = 1;
@@ -99,11 +99,10 @@ export default class App extends React.Component{
   };
 
   render() {
-    const {todoData,search,filter} = this.state
-    let completed_tasks = todoData.filter((el) => el.done).length;
-    let activ_tasks = todoData.filter((el) => el.lable).length - todoData.filter((el) => el.done).length;
-    const visibleData = this.searchElement(this.filterElement(todoData,filter),search);
-    let date = this.state.date || new Date();
+    const {todoData,search,filter,date} = this.state,
+      visibleData = this.searchElement(this.filterElement(todoData,filter),search);
+    let completed_tasks = todoData.filter((el) => el.done).length,
+      activ_tasks = todoData.filter((el) => el.lable).length - todoData.filter((el) => el.done).length;
     return (
      <div className="container">
        <h2>Список дел</h2>

@@ -13,7 +13,7 @@ export default class SearchBlock extends React.Component{
   ];
 
   customOnChange = (event)=>{
-    const {searchElement = () =>{}} = this.props
+    const {searchElement = () =>{}} = this.props;
     this.setState({
       value: event.target.value
     })
