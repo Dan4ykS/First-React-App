@@ -8,12 +8,7 @@ ul{
 }
 .mainContent {
   overflow: auto;
-  max-height: 60%;
-}
-.text{
-  margin-top: 15px;
-  text-align: right;
-  margin-right: 2%;
+  max-height: 50%;
 }
 h2{
   margin-bottom: 0;

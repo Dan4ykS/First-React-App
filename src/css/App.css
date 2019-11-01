@@ -8,3 +8,16 @@
 h2{
   text-align: center;
 }
+.header{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 15px 0;
+  position: relative;
+}
+span{
+  font-weight: 900
+}
+.header__text{
+  text-align: right;
+}

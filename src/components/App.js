@@ -9,10 +9,17 @@ export default class App extends React.Component{
   state={
     todoData: [],
     search: '', 
-    filter: 'all'
+    filter: 'all',
+    date: ''
   };
 
   startid = 1;
+
+  componentDidMount(){
+    setInterval(() => {
+      this.setState({ date : new Date()})
+    }, 1000);
+  }
 
   addElement = (text) => {
     const newElement = {
@@ -95,11 +102,19 @@ export default class App extends React.Component{
     const {todoData,search,filter} = this.state
     let completed_tasks = todoData.filter((el) => el.done).length;
     let activ_tasks = todoData.filter((el) => el.lable).length - todoData.filter((el) => el.done).length;
-    const visibleData = this.searchElement(this.filterElement(todoData,filter),search)
+    const visibleData = this.searchElement(this.filterElement(todoData,filter),search);
+    let date = this.state.date || new Date();
     return (
      <div className="container">
        <h2>Список дел</h2>
-       <div className='text'>Активных задач: {activ_tasks === 0 ? 'все задачи выполнены!': activ_tasks } <br/> Выполненных задач: {completed_tasks === 0 ? 'у вас пока нет выполненных задач': completed_tasks }</div>
+       <div className='header'>
+        <div className='header__time'>
+            <span>Текущее время:</span> {date.getHours() < 10 ? ('0' + date.getHours()) : date.getHours()}:{date.getMinutes() < 10 ? ('0' + date.getMinutes()): date.getMinutes() }:{date.getSeconds()<10? ('0' + date.getSeconds()): date.getSeconds()}
+        </div>
+        <div className='header__text'>
+          <span>Активных задач:</span> {activ_tasks === 0 ? 'все задачи выполнены!': activ_tasks } <br/> <span>Выполненных задач:</span> {completed_tasks === 0 ? 'у вас пока нет выполненных задач': completed_tasks }
+        </div>
+      </div>
        <SearchBlock 
        placeholder='Поиск'
        searchElement = {this.changeSearchEl}
