@@ -6,12 +6,12 @@ function Form({need, deleteElement, changeDone, changeImportant}){
   const elements = need.map((item)=>{
     const {id,...needItem} = item;
     return(
-    <li key = {id}>
-      <LisBlockItem {... needItem} 
-      deleteItem = {() => deleteElement(id)}
-      changeDone = {() => changeDone(id)}
-      changeImportant ={() => changeImportant(id)}/>
-    </li>);
+      <li key = {id}>
+        <LisBlockItem {... needItem} 
+        deleteItem = {() => deleteElement(id)}
+        changeDone = {() => changeDone(id)}
+        changeImportant ={() => changeImportant(id)}/>
+      </li>);
   });
 
   return (

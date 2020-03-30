@@ -1,23 +1,30 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Описание проекта
 
-## Available Scripts
+Этот проект - "список дел", мое первое приожение на [React](https://reactjs.org/). 
 
-In the project directory, you can run:
+Приложение позволяет:
+1. Создавать задачи
+1. Удалять задачи
+1. Добавлять задачи в избранное
+1. Удалять задачи из избранного
+1. Осуществлять поиск по задачам
+1. Отмечать задачи как выполненные/невыполненные
 
-### `npm start`
+Благодаря этому приложению, были изучены основные моменты работы с этой технологией:
+- Создание компонентов
+- Работа с состоянием
+- Работа с [JSX](https://ru.reactjs.org/docs/introducing-jsx.html)
+- Использование `CSS` для компонентов
+- Работа с массивами в состоянии компонентов
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Использование
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Для начала работы с приложением необходимо: 
+1. Установить [Node.js](https://nodejs.org/en/)
+1. Клонировать или скачать репозиторий
+1. Загрузить все пакеты командой `npm install`
+1. Запустить локальный сервер командой `npm start`
 
-### `npm run build`
+## Развертывание
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Если будет необходимо использовать приложение не для локального просмотра, необходимо выполнить команду `npm run build` для того, чтобы создался билд, который можно загрузить на хостинг.

@@ -6,7 +6,7 @@ import FormBlock from './FormBlock';
 import SearchBlock from './SearchBlock';
 
 export default class App extends React.Component{
-  state={
+  state = {
     todoData: [],
     search: '', 
     filter: 'all',
